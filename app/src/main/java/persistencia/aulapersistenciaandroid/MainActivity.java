@@ -1,17 +1,44 @@
 package persistencia.aulapersistenciaandroid;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 
 public class MainActivity extends ActionBarActivity {
+
+    private DataBaseHelper helper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        helper = new DataBaseHelper(MyApp.getAppContext());
+
+    }
+
+
+    public void salvarPessoa(View v){
+        SQLiteDatabase db = helper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("nome", "sanderson");
+
+        long id = db.insert("pessoa",null,values);
+
+
+        if(id != -1 ){
+            Toast.makeText(this,"Pessoal salva com sucesso",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this, "Erro na gravação", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 
@@ -21,6 +48,7 @@ public class MainActivity extends ActionBarActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

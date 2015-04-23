@@ -19,10 +19,12 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        helper = new DataBaseHelper(MyApp.getAppContext());
+
+        //cria passando o contexto
+        DataBaseHelper helper = new DataBaseHelper(this);
+        SQLiteDatabase db = helper.getWritableDatabase();
 
     }
-
 
     public void salvarPessoa(View v){
         SQLiteDatabase db = helper.getWritableDatabase();

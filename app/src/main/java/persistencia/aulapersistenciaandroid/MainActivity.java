@@ -21,8 +21,7 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         //cria passando o contexto
-        DataBaseHelper helper = new DataBaseHelper(this);
-        SQLiteDatabase db = helper.getWritableDatabase();
+        helper = new DataBaseHelper(this);
 
     }
 
@@ -38,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
         if(id != -1 ){
             Toast.makeText(this,"Pessoal salva com sucesso",Toast.LENGTH_LONG).show();
         }else{
-            Toast.makeText(this, "Erro na gravação", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Erro na gravação", Toast.LENGTH_SHORT).show();
         }
 
     }

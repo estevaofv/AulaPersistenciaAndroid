@@ -12,10 +12,10 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String BANCO_DADOS = "MeuBanco";
     private static int VERSAO = 1;
 
-    public DataBaseHelper(Context context){
-        super(context,BANCO_DADOS,null,VERSAO);
-    }
 
+    public DataBaseHelper(Context context) {
+        super(context, BANCO_DADOS, null, VERSAO);
+    }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
